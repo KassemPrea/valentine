@@ -94,23 +94,15 @@
   const yesBtn = document.getElementById("yes");
   const text = document.getElementById("text");
 
-  const freakMessages = [
-    "NOOOO! 😱",
-    "TRY AGAIN! 😳",
-    "Impossible 🙈",
-    "Haha nice try 😂",
-    "NOT TODAY! 😎"
-  ];
-
   noBtn.addEventListener("mouseenter", () => {
-    // Move the button
+    // Move the button randomly
     const x = Math.random() * (window.innerWidth - 120);
     const y = Math.random() * (window.innerHeight - 60);
     noBtn.style.left = x + "px";
     noBtn.style.top = y + "px";
 
-    // Change button text randomly
-    noBtn.innerHTML = freakMessages[Math.floor(Math.random() * freakMessages.length)];
+    // Keep text as NO 🙄
+    noBtn.innerHTML = "NO 🙄";
 
     // Add shake effect
     noBtn.style.animation = "shake 0.5s";
@@ -167,4 +159,3 @@
 
 </body>
 </html>
-
