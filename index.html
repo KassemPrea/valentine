@@ -23,6 +23,7 @@
     text-align: center;
     box-shadow: 0 25px 50px rgba(0,0,0,0.25);
     max-width: 400px;
+    position: relative;
   }
 
   h1 {
@@ -38,6 +39,7 @@
     cursor: pointer;
     margin: 10px;
     transition: 0.2s ease;
+    position: relative;
   }
 
   #yes {
@@ -63,6 +65,15 @@
     50% { transform: translateY(-200px) rotate(20deg); }
     100% { transform: translateY(-600px); opacity: 0; }
   }
+
+  @keyframes shake {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    20% { transform: translate(-5px, 0) rotate(-5deg); }
+    40% { transform: translate(5px, 0) rotate(5deg); }
+    60% { transform: translate(-5px, 0) rotate(-5deg); }
+    80% { transform: translate(5px, 0) rotate(5deg); }
+    100% { transform: translate(0, 0) rotate(0deg); }
+  }
 </style>
 </head>
 
@@ -83,11 +94,27 @@
   const yesBtn = document.getElementById("yes");
   const text = document.getElementById("text");
 
+  const freakMessages = [
+    "NOOOO! 😱",
+    "TRY AGAIN! 😳",
+    "Impossible 🙈",
+    "Haha nice try 😂",
+    "NOT TODAY! 😎"
+  ];
+
   noBtn.addEventListener("mouseenter", () => {
+    // Move the button
     const x = Math.random() * (window.innerWidth - 120);
     const y = Math.random() * (window.innerHeight - 60);
     noBtn.style.left = x + "px";
     noBtn.style.top = y + "px";
+
+    // Change button text randomly
+    noBtn.innerHTML = freakMessages[Math.floor(Math.random() * freakMessages.length)];
+
+    // Add shake effect
+    noBtn.style.animation = "shake 0.5s";
+    setTimeout(() => { noBtn.style.animation = ""; }, 500);
   });
 
   yesBtn.addEventListener("click", () => {
@@ -100,6 +127,14 @@
       launchHearts();
       launchEmojis();
     }, 1500);
+
+    setTimeout(() => {
+      text.innerHTML = "I can't stop smiling 😁<br>You're my favorite human 🥰";
+    }, 3500);
+
+    setTimeout(() => {
+      text.innerHTML = "I hope we laugh together forever 😂💖<br>Happy Valentine’s Day!";
+    }, 5500);
   });
 
   function launchHearts() {
