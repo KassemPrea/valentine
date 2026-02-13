@@ -112,7 +112,8 @@
   yesBtn.addEventListener("click", () => {
     text.innerHTML = "WAIT… JUDIII SAID YES?! 😳💘";
     yesBtn.style.display = "none";
-    noBtn.style.display = "none";
+    // NO button stays visible, does NOT disappear
+    // noBtn.style.display = "none"; <-- removed
 
     setTimeout(() => {
       text.innerHTML = "Judiii, you just made me the happiest person 😌💕";
